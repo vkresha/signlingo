@@ -10,7 +10,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Vite frontend
+    allow_origins=["*"],  # Vite frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -47,11 +47,12 @@ async def predict_gesture(file: UploadFile):
     video_bytes = await file.read()
     print("Video size:", len(video_bytes))
 
-    with open("temp.webm", "wb") as f:
+    temp_path = os.path.join(VIDEO_DIR, "temp.webm")
+    with open(temp_path, "wb") as f:
         f.write(video_bytes)
 
     print("Extracting landmarks...")
-    sequence = extract_landmarks("temp.webm", MAX_FRAMES)
+    sequence = extract_landmarks(temp_path, MAX_FRAMES)
 
     print("Running model...")
     preds = predict(sequence)
@@ -60,3 +61,6 @@ async def predict_gesture(file: UploadFile):
     print("Done")
     return {"predictions": preds}
     
+@app.get("/")
+def health():
+    return {"status": "ok"}
