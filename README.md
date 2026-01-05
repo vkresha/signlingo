@@ -1,7 +1,7 @@
 
   # Sign Language Learning App
 
-  This is a code bundle for Sign Language Learning App. The original project is available at https://www.figma.com/design/UsEQ39qqYwMzzmSrwG4gLP/Sign-Language-Learning-App.
+  This is a code bundle for Sign Language Learning App.
 
   ## Running the code
 
