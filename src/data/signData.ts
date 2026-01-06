@@ -314,7 +314,7 @@ export const signData: Record<string, Array<{
     id: 'anak lelaki',
     word: 'Anak Lelaki',
     description: 'Merujuk kepada anak lelaki',
-    videoUrl: '/videos/anak-lelaki.mp4',
+    videoUrl: '/videos/anak lelaki.mp4',
     instructions: [
       'Isyaratkan "anak"',
       'Ikuti dengan isyarat "lelaki"',
@@ -325,7 +325,7 @@ export const signData: Record<string, Array<{
     id: 'anak perempuan',
     word: 'Anak Perempuan',
     description: 'Merujuk kepada anak perempuan',
-    videoUrl: '/videos/anak-perempuan.mp4',
+    videoUrl: '/videos/anak perempuan.mp4',
     instructions: [
       'Isyaratkan "anak"',
       'Ikuti dengan isyarat "perempuan"',
@@ -336,7 +336,7 @@ export const signData: Record<string, Array<{
     id: 'bapa saudara',
     word: 'Bapa Saudara',
     description: 'Abang atau adik kepada bapa',
-    videoUrl: '/videos/bapa-saudara.mp4',
+    videoUrl: '/videos/bapa saudara.mp4',
     instructions: [
       'Isyaratkan "bapa"',
       'Ikuti dengan isyarat "saudara"',
@@ -347,7 +347,7 @@ export const signData: Record<string, Array<{
     id: 'emak saudara',
     word: 'Emak Saudara',
     description: 'Kakak atau adik kepada ibu',
-    videoUrl: '/videos/emak-saudara.mp4',
+    videoUrl: '/videos/emak saudara.mp4',
     instructions: [
       'Isyaratkan "emak"',
       'Ikuti dengan isyarat "saudara"',
@@ -404,7 +404,7 @@ export const signData: Record<string, Array<{
     id: 'nasi lemak',
     word: 'Nasi Lemak',
     description: 'Hidangan tradisional Malaysia',
-    videoUrl: '/videos/nasi-lemak.mp4',
+    videoUrl: '/videos/nasi lemak.mp4',
     instructions: [
       'Isyaratkan "nasi"',
       'Ikuti dengan isyarat "lemak"',
@@ -415,7 +415,7 @@ export const signData: Record<string, Array<{
     id: 'teh tarik',
     word: 'Teh Tarik',
     description: 'Minuman teh susu yang popular',
-    videoUrl: '/videos/teh-tarik.mp4',
+    videoUrl: '/videos/teh tarik.mp4',
     instructions: [
       'Bentuk tangan seperti memegang cawan',
       'Lakukan gerakan menuang dan menarik',
@@ -445,17 +445,6 @@ export const signData: Record<string, Array<{
       'Gerakkan tangan ke hadapan secara lembut',
     ],
     tips: 'Digunakan untuk menyatakan keadaan diri atau orang lain dalam keadaan positif.',
-  },
-  {
-    id: 'baik 2',
-    word: 'Baik 2',
-    description: 'Variasi isyarat untuk "baik"',
-    videoUrl: '/videos/baik 2.mp4',
-    instructions: [
-      'Buat isyarat seperti "baik"',
-      'Tambahkan sedikit gerakan bulat untuk penekanan',
-    ],
-    tips: 'Boleh digunakan sebagai variasi untuk menekankan maksud.',
   },
   {
     id: 'jahat',

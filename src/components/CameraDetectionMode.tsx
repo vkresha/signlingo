@@ -18,6 +18,23 @@ type QuizSign = {
   description: string;
 };
 
+const ALLOWED_GLOSSES = [
+  "hari",
+  "marah",
+  "hi",
+  "suka",
+  "lemak",
+  "hujan",
+  "mana",
+  "kesakitan",
+  "tidur",
+  "abang",
+  "perempuan",
+  "nasi",
+  "anak perempuan",
+  "ambil"
+];
+
 export function CameraDetectionMode({ onQuizComplete }: CameraDetectionModeProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [stream, setStream] = useState<MediaStream | null>(null);
@@ -101,23 +118,45 @@ useEffect(() => {
     }
   };
 
-  const startNewQuiz = () => {
-    const allSigns: QuizSign[] = [];
-    Object.entries(signData).forEach(([category, signs]) => {
-      signs.forEach(sign => {
-        allSigns.push({ ...sign, category });
-      });
-    });
+    const startNewQuiz = () => {
+  const allSigns: QuizSign[] = [];
 
-    const shuffled = allSigns.sort(() => Math.random() - 0.5);
-    const selected = shuffled.slice(0, 8);
-    setQuizSigns(selected);
-    setCurrentIndex(0);
-    setScore(0);
-    setQuizComplete(false);
-    setDetectionResult(null);
-    setShowFeedback(false);
-  };
+  Object.entries(signData).forEach(([category, signs]) => {
+    signs.forEach(sign => {
+      const word = sign.word.trim().toLowerCase();
+
+      const allowed = ALLOWED_GLOSSES
+        .map(g => g.trim().toLowerCase())
+        .includes(word);
+
+      if (!allowed) return;
+
+      allSigns.push({ ...sign, category });
+    });
+  });
+
+  const shuffled = allSigns.sort(() => Math.random() - 0.5);
+
+  setQuizSigns(shuffled.slice(0, 8)); // or remove slice if list < 8
+  setCurrentIndex(0);
+  setScore(0);
+  setQuizComplete(false);
+  setDetectionResult(null);
+  setShowFeedback(false);
+
+  console.log("Selected quiz signs:", shuffled.map(s => s.word));
+};
+
+
+  //   const shuffled = allSigns.sort(() => Math.random() - 0.5);
+  //   const selected = shuffled.slice(0, 8);
+  //   setQuizSigns(selected);
+  //   setCurrentIndex(0);
+  //   setScore(0);
+  //   setQuizComplete(false);
+  //   setDetectionResult(null);
+  //   setShowFeedback(false);
+  // };
 
   const startCamera = async () => {
     // First, check if mediaDevices is supported
@@ -239,7 +278,7 @@ const evaluatePrediction = (preds: any[]) => {
   // 1️⃣ Sort by confidence descending
   const top3 = [...preds]
     .sort((a, b) => b.confidence - a.confidence)
-    .slice(0, 3);
+    .slice(0, 5);
 
   const target = quizSigns[currentIndex].word.toLowerCase().trim();
 
@@ -318,11 +357,6 @@ const startRecording = () => {
     setDetectionResult(result.correct ? "correct" : "incorrect");
     setShowFeedback(true);
 
-    if (result.correct) {
-      setScore(prev => prev + 1);
-      advanceToNextSign();
-    }
-
     // ⏱ WAIT, THEN DECIDE NEXT STEP
     setTimeout(() => {
       setShowFeedback(false);
@@ -331,6 +365,7 @@ const startRecording = () => {
       setLockUI(false);
 
      if (result.correct) {
+      setScore(prev => prev + 1); 
       advanceToNextSign();
     }
 
@@ -453,7 +488,7 @@ const startRecording = () => {
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-4 text-white">
               <div className="flex items-center justify-between">
-                <h3>Camera Anda</h3>
+                <h3>Kamera Anda</h3>
               
                  <button
                     onClick={cameraEnabled ? stopCamera : startCamera}
@@ -466,12 +501,12 @@ const startRecording = () => {
                     {cameraEnabled ? (
                       <>
                         <Camera className="w-4 h-4" />
-                        {/* <span className="text-sm"></span> */}
+                        <span className="text-sm">Hentikan</span>
                       </>
                     ) : (
                       <>
                         <CameraOff className="w-4 h-4" />
-                        {/* <span className="text-sm"></span> */}
+                        <span className="text-sm">Hidupkan</span>
                       </>
                     )}
                   </button>

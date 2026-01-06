@@ -189,10 +189,10 @@ export function QuizMode({ onQuizComplete }: QuizModeProps) {
               <video
                 src={currentSign.videoUrl}
                 className="w-full h-full object-contain"
-                muted
                 autoPlay
                 playsInline
-                controls
+                loop
+                muted
               />
             </div>
 
