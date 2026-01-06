@@ -19,14 +19,13 @@ type QuizSign = {
 };
 
 const ALLOWED_GLOSSES = [
-  "hari",
   "marah",
   "hi",
   "suka",
   "lemak",
   "hujan",
-  "mana",
-  "kesakitan",
+  "anak lelaki",
+  "makan",
   "tidur",
   "abang",
   "perempuan",

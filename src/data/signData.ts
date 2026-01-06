@@ -23,7 +23,7 @@ export const signData: Record<string, Array<{
   {
     id: 'assalamualaikum',
     word: 'Assalamualaikum',
-    description: '/videos/assalamualaikum.mp4',
+    description: 'Salam pembuka yang sopan',
     videoUrl: '/videos/assalamualaikum.mp4',
     instructions: [
       'Letakkan tangan kanan di hadapan dada',

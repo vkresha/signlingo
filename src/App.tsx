@@ -69,7 +69,9 @@ function HomePage({ onNavigate }: { onNavigate: (view: View) => void }) {
       <div className="max-w-4xl w-full space-y-8">
         <div className="text-center space-y-4">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-indigo-600 rounded-full mb-4">
-            <Home className="w-10 h-10 text-white" />
+            {/* <Home className="w-10 h-10 text-white" /> */}
+            <img src="/logosign.png" alt="SignLingo Logo" className="w-10 h-10" />
+          
           </div>
           <h1 className="text-indigo-900">SignLingo</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
